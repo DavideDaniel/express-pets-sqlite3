@@ -1,0 +1,17 @@
+{
+  "name": "expressPets.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "restPets.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.10.2",
+    "express": "^4.11.1",
+    "method-override": "^2.3.1",
+    "sqlite3": "^3.0.4"
+  }
+}
