@@ -103,40 +103,6 @@ app.delete( '/student/:id', function ( req, res ) {
   res.redirect( '/students' );
 } );
 
-app.post( '/sort/:id', function ( req, res ) {
-  var houses = [ "Gryffindor", "Ravenclaw", "Hufflepuff", "Slytherin" ];
-  for ( student in students ) {
-    if ( students[ student ].id == req.params.id ) {
-      students[ student ].house = houses[ Math.floor( Math.random() * houses.length ) ];
-    }
-  }
-  req.method = 'get';
-  res.redirect( '/students' );
-} );
-
-app.get( '/houses/:house_name', function ( req, res ) {
-  var house = req.params.house_name;
-  res.render( 'house.ejs', {
-    house: house,
-    students: students
-  } );
-} );
-
 app.listen( 3000 );
 
 console.log( "Server listening on port: 3000" );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
