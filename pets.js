@@ -86,9 +86,29 @@ var editPet = function ( li, name, type ) {
 	var updateButton = document.createElement( 'button' );
 	updateButton.innerHTML = 'Update';
 	updateButton.addEventListener( 'click', function () {
-		alert( 'not written yet' );
+		var newName = nameField.value;
+		var newType = typeField.value;
+		updatePet(li,newName, newType)
 	} );
 	li.appendChild( updateButton );
+
+};
+
+var updatePet = function ( li, newName, newType ) {
+	var id = li.id.substring( 3 ); //pet3
+	console.log(id);
+	var xhr = new XMLHttpRequest();
+	xhr.open( 'PUT', 'http://localhost:3000/pet/' + id );
+	xhr.setRequestHeader( "Content-Type", "application/json;charset=UTF-8" );
+	xhr.addEventListener( 'load', function () {
+		var returnedPet = JSON.parse( xhr.responseText );
+		setLiToPet( li, returnedPet );
+		console.log(returnedPet);
+
+	} )
+	var updatedPet = { name: newName, type: newType};
+	xhr.send(JSON.stringify(updatedPet))
+	console.log(updatedPet);
 };
 
 var addNewPetButton = document.getElementById( 'addNewPet' );

@@ -39,6 +39,7 @@ app.post( '/pet', function ( req, res ) {
     name: req.body.name,
     type: req.body.type
   };
+  console.log(newPet);
 
   pets[ numPets ] = newPet;
   res.json( newPet );
@@ -51,6 +52,16 @@ app.delete( '/pet/:id', function ( req, res ) {
     deleted: true
   } );
 } );
+
+app.put("/pet/:id", function(req, res){
+ console.log("put request");
+ var id = req.params.id;
+ pets[id].name = req.body.name;
+ pets[id].type = req.body.type;
+console.log(pets[id]);
+
+ res.json(pets[id]);
+});
 
 app.listen( 3000 );
 console.log( 'Listening on port 3000' );
